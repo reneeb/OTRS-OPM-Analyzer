@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    
+    <xs:element name="otrs_package">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Name"/>
+                <xs:element ref="Version"/>
+                <xs:element ref="Vendor"/>
+                <xs:element ref="URL"/>
+                <xs:element ref="License"/>
+                <xs:element ref="ChangeLog" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="Description" maxOccurs="unbounded" />
+                <xs:element ref="Framework" maxOccurs="unbounded" />
+                <xs:element ref="OS" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="IntroInstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="IntroUninstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="IntroReinstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="IntroUpgrade" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="PackageRequired" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="ModuleRequired" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="CodeInstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="CodeUpgrade" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="CodeUninstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="CodeReinstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="BuildDate" minOccurs="0" />
+                <xs:element ref="BuildHost" minOccurs="0" />
+                <xs:element ref="Filelist"/>
+                <xs:element ref="DatabaseInstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="DatabaseUpgrade" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="DatabaseReinstall" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="DatabaseUninstall" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="version" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="ChangeLog">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Date" use="required" type="xs:anySimpleType"/>
+                    <xs:attribute name="Version" use="required" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Description">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Lang" use="required" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Filelist">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="File" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="PackageRequired">
+        <xs:complexType>
+            <xs:attribute name="Version" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="ModuleRequired">
+        <xs:complexType>
+            <xs:attribute name="Version" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="IntroInstall">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="IntroUninstall">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="IntroReinstall">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="IntroUpgrade">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+            <xs:attribute name="Lang" use="optional" type="xs:anySimpleType"/>
+            <xs:attribute name="Title" use="optional" type="xs:anySimpleType"/>
+            <xs:attribute name="Translatable" use="optional" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="CodeInstall">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CodeUninstall">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CodeReinstall">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CodeUpgrade">
+        <xs:complexType>
+            <xs:attribute name="Type" use="required" type="xs:anySimpleType"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="DatabaseInstall">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Type" use="optional" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DatabaseUninstall">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Type" use="optional" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DatabaseReinstall">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Type" use="optional" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DatabaseUpgrade">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Type" use="optional" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="File">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Location" use="required" type="xs:anySimpleType"/>
+                    <xs:attribute name="Permission" use="required" type="xs:anySimpleType"/>
+                    <xs:attribute name="Encode" use="required" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Name" type="xs:token"/>
+    <xs:element name="Vendor" type="xs:token"/>
+    <xs:element name="URL" type="xs:token"/>
+    <xs:element name="Framework" type="xs:token"/>
+    <xs:element name="Version" type="xs:token"/>
+    <xs:element name="License" type="xs:token"/>
+    <xs:element name="OS" type="xs:token"/>
+    <xs:element name="BuildDate" type="xs:token"/>
+    <xs:element name="BuildHost" type="xs:token"/>
+    
+</xs:schema>
