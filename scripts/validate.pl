@@ -4,26 +4,40 @@ use strict;
 use warnings;
 
 use File::Basename;
+use File::Find::Rule;
 use File::Spec;
 use XML::LibXML;
 
-if ( !$ARGV[0] and -f $ARGV[0] ) {
-    die "Usage: $0 <file_to_check.opm>\n";
+if ( !( $ARGV[0] and -d $ARGV[0] ) ) {
+    die "Usage: $0 <dir_with_opms>\n";
 }
 
 my $dir      = dirname __FILE__;
 my $xsd_path = File::Spec->catfile( $dir, '..', 'doc', 'opm.xsd' );
 
-my $schema = XML::LibXML::Schema->new( location => $xsd_path );
-my $parser = XML::LibXML->new;
+my @opms = File::Find::Rule->maxdepth(1)->file->name( '*.opm' )->in( $ARGV[0] );
 
-$parser->keep_blanks(0);
+for my $opm ( @opms ) {
 
-my $tree   = $parser->parse_file( $ARGV[0] );
 
-eval{
-    $schema->validate( $tree );
-    1;
-} or die $@;
+    my $schema = XML::LibXML::Schema->new( location => $xsd_path );
+    my $parser = XML::LibXML->new;
+
+    $parser->keep_blanks(0);
+    
+    my $tree   = $parser->parse_file( $opm );
+    print "$opm: ";
+    
+    my $ok = 'ok';
+
+    eval{
+        $schema->validate( $tree );
+        1;
+    } or $ok = $@;
+    
+    print "$ok\n";
+    
+    #<STDIN>;
+}
 
 print "done";
