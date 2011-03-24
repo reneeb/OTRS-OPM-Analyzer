@@ -3,7 +3,9 @@ package OTRS::OPM::Analyzer::Role::SystemCall;
 use Moose::Role;
 use PPI;
 
-sub analyze_systemcall {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ($self,$document) = @_;
     
     return if $document->{filename} !~ m{ \. (?:pl|pm|pod|t) \z }xms;

@@ -2,7 +2,9 @@ package OTRS::OPM::Analyzer::Role::Documentation;
 
 use Moose::Role;
 
-sub analyze_unittests {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ($self,$opm) = @_;
     
     my $has_documentation = 0;

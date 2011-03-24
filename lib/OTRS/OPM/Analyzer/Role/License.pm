@@ -4,7 +4,9 @@ use Moose::Role;
 use Software::License;
 use Software::LicenseUtils;
 
-sub analyze_license {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ($self,$opm) = @_;
     
     my $license  = $opm->license;

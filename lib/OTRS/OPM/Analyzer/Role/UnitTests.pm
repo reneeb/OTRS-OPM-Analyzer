@@ -3,7 +3,9 @@ package OTRS::OPM::Analyzer::Role::UnitTests;
 use Moose::Role;
 use PPI;
 
-sub analyze_unittests {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ($self,$opm) = @_;
     
     my $has_unittest = 0;

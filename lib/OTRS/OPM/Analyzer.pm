@@ -53,7 +53,7 @@ sub load_roles {
     
     for my $area ( keys %roles ) {
         for my $role ( @{ $roles{$area} } ) {
-            with __PACKAGE__ . '::Role::' . $role;
+            with __PACKAGE__ . '::Role::' . $role => { -alias => { check => 'check_' . lc $role } };
         }
     }
 }
@@ -82,7 +82,7 @@ sub analyze {
         
         ROLE:
         for my $role ( @{ $roles{file} || [] } ) {
-            my ($sub) = $self->can( 'analyze_' . lc $role );
+            my ($sub) = $self->can( 'check_' . lc $role );
             next ROLE if !$sub;
             
             my $result   = $self->$sub( $file );
@@ -97,7 +97,7 @@ sub analyze {
     # as these checks are no checks of the content
     ROLE:
     for my $role ( @{ $roles{opm} || [] } ) {
-        my ($sub) = $self->can( 'analyze_' . lc $role );
+        my ($sub) = $self->can( 'check_' . lc $role );
         next ROLE if !$sub;
         
         my $result   = $self->$sub( $opm_object );

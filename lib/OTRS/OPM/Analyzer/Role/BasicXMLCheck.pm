@@ -3,7 +3,9 @@ package OTRS::OPM::Analyzer::Role::BasicXMLCheck;
 use Moose::Role;
 use XML::LibXML;
 
-sub analyze_basicxmlcheck {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ( $self, $document ) = @_;
     
     return if $document->{filename} !~ m{ \.xml \z }xms;

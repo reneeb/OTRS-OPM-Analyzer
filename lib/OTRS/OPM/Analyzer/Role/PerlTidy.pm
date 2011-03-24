@@ -6,7 +6,9 @@ use File::Temp ();
 use Perl::Tidy;
 use Text::Diff;
 
-sub analyze_perltidy {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ($self,$document) = @_;
     
     return if $document->{filename} !~ m{ \. (?:pl|pm|pod|t) \z }xms;

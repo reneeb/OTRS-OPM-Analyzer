@@ -8,7 +8,9 @@ use Module::CoreList;
 use Module::OTRS::CoreList;
 use PPI;
 
-sub analyze_dependencies {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ( $self, $opm ) = @_;
     
     # get all dependencies declared in opm file

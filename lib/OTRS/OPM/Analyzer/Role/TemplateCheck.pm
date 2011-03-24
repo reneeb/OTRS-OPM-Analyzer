@@ -3,7 +3,9 @@ package OTRS::OPM::Analyzer::Role::TemplateCheck;
 use Moose::Role;
 use HTML::Lint;
 
-sub analyze_templatecheck {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ( $self, $document ) = @_;
     
     return if $document->{filename} !~ m{ \.dtl \z }xms;

@@ -6,7 +6,9 @@ use File::Basename;
 use File::Temp ();
 use Perl::Critic;
 
-sub analyze_perlcritic {
+with 'OTRS::OPM::Analyzer::Role::Base';
+
+sub check {
     my ($self,$document) = @_;
     
     return if $document->{filename} !~ m{ \. (?:pl|pm|pod|t) \z }xms;
