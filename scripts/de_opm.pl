@@ -36,6 +36,7 @@ my $object = OTRS::OPM::Analyzer::Utils::OPMFile->new(
 $object->parse;
 
 for my $file ( $object->files ) {
+    print "create $file->{filename}...\n";
     my $full_path = File::Spec->catfile( $out_dir, $file->{filename} );
     my $dir       = dirname( $full_path );
     
@@ -45,3 +46,15 @@ for my $file ( $object->files ) {
     print $fh $file->{content};
     close $fh;
 }
+
+print "create ", $object->name, ".sopm...\n";
+my $sopm_file = File::Spec->catfile(
+    $out_dir,
+    $object->name . '.sopm',
+);
+
+open my $fh, '>', $sopm_file or exit 1;
+print $fh $object->as_sopm;
+close $fh;
+
+print "done\n";
