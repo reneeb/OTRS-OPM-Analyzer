@@ -23,7 +23,6 @@ subtype 'XMLTree' =>
 
 # declare attributes
 has name         => ( is  => 'rw', isa => 'Str', );
-has framework    => ( is  => 'rw', isa => 'FrameworkVersionString', );
 has version      => ( is  => 'rw', isa => 'VersionString', );
 has vendor       => ( is  => 'rw', isa => 'Str', );
 has url          => ( is  => 'rw', isa => 'Str', );
@@ -50,6 +49,17 @@ has files => (
     default    => sub{ [] },
     handles    => {
         add_file => 'push',
+    },
+);
+
+has framework  => (
+    traits     => ['Array'],
+    is         => 'rw',
+    isa        => 'ArrayRef[FrameworkVersionString]',
+    auto_deref => 1,
+    default    => sub { [] },
+    handles    => {
+        add_framework => 'push',
     },
 );
 
@@ -132,10 +142,20 @@ sub parse {
     $self->vendor(    $root->findvalue( 'Vendor' ) );
     $self->name(      $root->findvalue( 'Name' ) );
     $self->license(   $root->findvalue( 'License' ) );
-    $self->framework( $root->findvalue( 'Framework' ) );
     $self->version(   $root->findvalue( 'Version' ) );
     $self->url(       $root->findvalue( 'URL' ) );
     
+    # retrieve framework information
+    my @frameworks = $root->findnodes( 'Framework' );
+    
+    FILE:
+    for my $framework ( @frameworks ) {
+        my $framework_version = $framework->textContent;
+        
+        # push framework info to attribute
+        $self->add_framework( $framework_version );
+    }
+
     # retrieve file information
     my @files = $root->findnodes( 'Filelist/File' );
     
