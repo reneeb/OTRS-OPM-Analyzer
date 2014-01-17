@@ -118,16 +118,27 @@ sub documentation {
 
 sub parse {
     my ($self) = @_;
+
+    $self->error_string( '' );
     
     if ( !-e $self->opm_file ) {
         $self->error_string( 'File does not exist' );
         return;
     }
-    
-    my $parser = XML::LibXML->new;
-    my $tree   = $parser->parse_file( $self->opm_file );
+   
+    my $tree;
+    try {
+        my $parser = XML::LibXML->new;
+        $tree      = $parser->parse_file( $self->opm_file );
 
-    $self->tree( $tree );
+        $self->tree( $tree );
+    }
+    catch {
+        $self->error_string( 'Could not parse .opm: ' . $_ );
+        return;
+    };
+
+    return if $self->error_string;
     
     # check if the opm file is valid.
     try {
@@ -225,11 +236,14 @@ sub as_sopm {
     my $tree = $self->tree->cloneNode(1);
     my $root = $tree->getDocumentElement;
     
-    my ($build_host) = $root->findnodes( 'BuildHost' );
-    my ($build_date) = $root->findnodes( 'BuildDate' );
+    my @build_host = $root->findnodes( 'BuildHost' );
+    my @build_date = $root->findnodes( 'BuildDate' );
     
-    $root->removeChild( $build_host);
-    $root->removeChild( $build_date );
+    $root->removeChild( $_ ) for @build_host;
+    $root->removeChild( $_ ) for @build_date;
+
+    #$build_host->unbindNode() if $build_host;
+    #$build_date->unbindNode() if $build_date;
     
     my @files = $root->findnodes( 'Filelist/File' );
     for my $file ( @files ) {
@@ -298,7 +312,7 @@ __DATA__
     <xs:element name="otrs_package">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="Name"/>
+                <xs:element ref="Name" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="Version"/>
                 <xs:element ref="Vendor"/>
                 <xs:element ref="URL"/>
