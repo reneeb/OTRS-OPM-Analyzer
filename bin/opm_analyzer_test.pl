@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# PODNAME: opm_analyzer_test.pl
+
 use strict;
 use warnings;
 

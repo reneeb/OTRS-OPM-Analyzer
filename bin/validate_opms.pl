@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# PODNAME: validate_opms.pl
+
 use strict;
 use warnings;
 

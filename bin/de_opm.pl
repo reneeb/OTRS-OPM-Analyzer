@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# PODNAME: de_opm.pl
+
 use strict;
 use warnings;
 
