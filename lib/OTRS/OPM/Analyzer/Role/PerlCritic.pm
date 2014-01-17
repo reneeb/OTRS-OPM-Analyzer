@@ -26,12 +26,15 @@ sub check {
     
     my $conf_path    = $self->config->get( 'utils.config' );
     my $perlcriticrc = $self->config->get( 'utils.perlcritic.config' );
+    my $theme        = $self->config->get( 'utils.perlcritic.theme' ) || 'otrs';
+    my $include      = $self->config->get( 'utils.perlcritic.include' ) || ['otrs'];
+
     my %options;
     $options{-profile} = $conf_path . '/' . $perlcriticrc if $perlcriticrc;
     
     my $critic       = Perl::Critic->new(
-        -theme    => 'otrs',
-        -include  => ['otrs'],
+        -theme    => $theme,
+        -include  => $include,
         %options,
     );
     
