@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer;
 
+# ABSTRACT: Analyze OTRS add-ons (.opm files)
+
 use Moose;
 use Moose::Util::TypeConstraints;
 
@@ -46,7 +48,7 @@ has roles => (
     auto_deref => 1,
 );
 
-sub load_roles {
+sub _load_roles {
     my ($self) = @_;
     
     my %roles = $self->roles;
@@ -61,7 +63,7 @@ sub load_roles {
 sub analyze {
     my ($self,$opm) = @_;
     
-    $self->load_roles;
+    $self->_load_roles;
     
     my $opm_object = OTRS::OPM::Analyzer::Utils::OPMFile->new(
         opm_file => $opm,
@@ -123,3 +125,55 @@ sub config {
 no Moose;
 
 1;
+
+=head1 DESCRIPTION
+
+OTRS add ons are plain XML files with all information in it. Even the files that are shipped with
+the add on is in this XML file (base64 encoded). Those add ons should be implemented in the
+OTRS way of Perl programming and include some specific files (like documentation).
+
+=head1 SYNOPSIS
+
+  use OTRS::OPM::Analyzer;
+  use Data::Dumper;
+  
+  my $opm      = 'test.opm';
+  my $config   = $FindBin::Bin . '/../conf/base.yml';
+  my $analyzer = OTRS::OPM::Analyzer->new(
+      configfile => $config,
+      roles => {
+          opm => [qw/Dependencies/],
+      },
+  );
+  my $results  = $analyzer->analyze( $opm );
+  
+  print Dumper $results;
+
+=head1 METHODS
+
+=head2 analyze
+
+=head2 config
+
+=head1 SHIPPED ROLES
+
+=head2 Base
+
+=head2 BasicXMLCheck
+
+=head2 Dependencies
+
+=head2 Documentation
+
+=head2 License
+
+=head2 PerlCritic
+
+=head2 PerlTidy
+
+=head2 SystemCall
+
+=head2 TemplateCheck
+
+=head2 UnitTests
+
