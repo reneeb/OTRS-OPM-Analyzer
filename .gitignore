@@ -1,0 +1,3 @@
+*.swp
+OTRS-OPM-Analyzer*
+.build*
