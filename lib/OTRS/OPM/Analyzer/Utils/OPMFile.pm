@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Utils::OPMFile;
 
+# ABSTRACT: Parser for the .opm file
+
 use Moose;
 use Moose::Util::TypeConstraints;
 
@@ -243,6 +245,50 @@ sub as_sopm {
 no Moose;
 
 1;
+
+=head1 SYNOPSIS
+
+=head1 METHODS
+
+=head2 new
+
+=head2 parse
+
+=head2 as_sopm
+
+=head2 documentation
+
+=head1 ATTRIBUTES
+
+=over 4
+
+=item * opm_file
+
+=item * tree
+
+=item * framework
+
+=item * dependencies
+
+=item * files
+
+=item * error_string
+
+=item * description
+
+=item * license
+
+=item * url
+
+=item * vendor
+
+=item * version
+
+=item * name
+
+=back
+
+=cut
 
 __DATA__
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
