@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Utils::Config;
 
+# ABSTRACT: class to parse a yaml config
+
 use strict;
 use warnings;
 
@@ -81,4 +83,56 @@ sub set {
 }
 
 1;
+__END__
+
+=head1 SYNOPSIS
+
+  use OTRS::OPM::Analyzer::Utils::Config;
+  
+  my $config = '/path/to/config.yml';
+  my $obj    = OTRS::OPM::Analyzer::Utils::Config->new( $config );
+  
+  print $obj->get( 'app.path' ); # /opt/otrs/
+  print $obj->get( 'app' )->{path}; # /opt/otrs/
+  
+  $obj->set( 'app.version', '3.3.3' );
+  print $obj->get( 'app.version' ); # 3.3.3
+
+config.yml
+
+  ---
+  app:
+    path: /opt/otrs/
+
+=head1 METHODS
+
+=head2 new
+
+Creates a new object of the config parser
+
+  use OTRS::OPM::Analyzer::Utils::Config;
+  
+  my $config = '/path/to/config.yml';
+  my $obj    = OTRS::OPM::Analyzer::Utils::Config->new( $config );
+
+=head2 load
+
+Loads a new config
+
+  my $config = '/path/to/config.yml';
+  my $obj    = OTRS::OPM::Analyzer::Utils::Config->new;
+  $obj->load( $config );
+
+=head2 get
+
+Returns the value of a given config key. Multilevel hashes can be separated with a '.'
+
+  print $obj->get( 'app.path' ); # /opt/otrs/
+  print $obj->get( 'app' )->{path}; # /opt/otrs/
+
+=head2 set
+
+Sets a config option
+
+  $obj->set( 'app.version', '3.3.3' );
 
