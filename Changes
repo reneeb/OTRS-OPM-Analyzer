@@ -1,6 +1,11 @@
 Change history for OTRS::OPM::Analyzer
 ======================================
 
+0.02 2014-05-02
+
+  + Add ABSTRACTS to scripts and roles
+  + fix test failure
+
 0.01 2014-01-17T11:00:14
 
   + initial release
