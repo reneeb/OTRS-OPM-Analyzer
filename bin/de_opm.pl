@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # PODNAME: de_opm.pl
+# ABSTRACT: create the files listed in the .opm (unpack it)
 
 use strict;
 use warnings;

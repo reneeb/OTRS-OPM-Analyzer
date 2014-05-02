@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # PODNAME: validate_opms.pl
+# ABSTRACT: Validate .opms against the XML schema
 
 use strict;
 use warnings;

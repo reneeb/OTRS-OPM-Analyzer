@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::Dependencies;
 
+# ABSTRACT: Check that all dependencies were declared
+
 use Moose::Role;
 
 use File::Basename;
@@ -123,3 +125,9 @@ sub _get_required_modules {
 no Moose::Role;
 
 1;
+
+=head1 DESCRIPTION
+
+This role checks if all dependencies were declared. To achieve this, all modules that are
+C<use>d are compared to the modules OTRS ships and those that are shipped with the Perl
+core.

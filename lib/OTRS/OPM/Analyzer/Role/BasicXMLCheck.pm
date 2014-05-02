@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::BasicXMLCheck;
 
+# ABSTRACT: Check if the .xml files can be parsed
+
 use Moose::Role;
 use XML::LibXML;
 
@@ -24,3 +26,8 @@ sub check {
 no Moose::Role;
 
 1;
+
+=head1 DESCRIPTION
+
+All .xml files are checked if they can be parsed with C<XML::LibXML>
+

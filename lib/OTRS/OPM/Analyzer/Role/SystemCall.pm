@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::SystemCall;
 
+# ABSTRACT: check if the code does a system call
+
 use Moose::Role;
 use PPI;
 
@@ -66,3 +68,8 @@ sub check {
 no Moose::Role;
 
 1;
+
+=head1 DESCRIPTION
+
+It might be bad when OTRS add ons calls a third party program. Hence we check for it.
+

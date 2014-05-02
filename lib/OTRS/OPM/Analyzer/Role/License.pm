@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::License;
 
+# ABSTRACT: Check if an appropriate License is used
+
 use Moose::Role;
 use Software::License;
 use Software::LicenseUtils;

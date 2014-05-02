@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::PerlCritic;
 
+# ABSTRACT: Check if the code matches the OTRS coding guideline
+
 use Moose::Role;
 
 use File::Basename;

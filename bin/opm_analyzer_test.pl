@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # PODNAME: opm_analyzer_test.pl
+# ABSTRACT: a short script to test the analyzer
 
 use strict;
 use warnings;

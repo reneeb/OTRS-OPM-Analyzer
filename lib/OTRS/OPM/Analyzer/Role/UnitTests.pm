@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::UnitTests;
 
+# ABSTRACT: checks if the add on has unit tests
+
 use Moose::Role;
 use PPI;
 

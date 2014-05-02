@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::TemplateCheck;
 
+# ABSTRACT: Basic check for templates
+
 use Moose::Role;
 use HTML::Lint;
 

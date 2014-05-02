@@ -1,5 +1,7 @@
 package OTRS::OPM::Analyzer::Role::PerlTidy;
 
+# ABSTRACT: Check if the code matches the OTRS coding guidelines (part II)
+
 use Moose::Role;
 
 use File::Temp ();
