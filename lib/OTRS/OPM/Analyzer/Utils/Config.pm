@@ -28,7 +28,15 @@ sub new{
 sub load{
     my ($self,$file) = @_;
     croak "no config file given" unless defined $file;
-    $self->{_config} = (YAML::Tiny->read( $file ) || [] )->[0] || {};
+
+    my $result = eval{
+        YAML::Tiny->read( $file );
+    };
+
+    $result ||= [];
+
+    $self->{_config} = $result->[0] || {};
+
     return $self->{_config};
 }
 
