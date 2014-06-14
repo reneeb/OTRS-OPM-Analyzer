@@ -56,7 +56,10 @@ sub _load_roles {
     
     for my $area ( keys %roles ) {
         for my $role ( @{ $roles{$area} } ) {
-            with __PACKAGE__ . '::Role::' . $role => { -alias => { check => 'check_' . lc $role } };
+            with __PACKAGE__ . '::Role::' . $role => {
+                -alias    => { check => 'check_' . lc $role },
+                -excludes => 'check',
+            };
         }
     }
 }
