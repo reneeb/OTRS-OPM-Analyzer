@@ -65,6 +65,17 @@ has framework  => (
     },
 );
 
+has framework_details => (
+    traits     => ['Array'],
+    is         => 'rw',
+    isa        => 'ArrayRef[HashRef]',
+    auto_deref => 1,
+    default    => sub { [] },
+    handles    => {
+        add_framework_detail => 'push',
+    },
+);
+
 has dependencies => (
     traits     => ['Array'],
     is         => 'rw',
@@ -166,8 +177,16 @@ sub parse {
     for my $framework ( @frameworks ) {
         my $framework_version = $framework->textContent;
         
+        my %details = ( Content => $framework_version );
+        my $maximum = $framework->findvalue( '@Maximum' );
+        my $minimum = $framework->findvalue( '@Minimum' );
+
+        $details{Maximum} = $maximum if $maximum;
+        $details{Minimum} = $minimum if $minimum;
+        
         # push framework info to attribute
         $self->add_framework( $framework_version );
+        $self->add_framework_detail( \%details );
     }
 
     # retrieve file information
@@ -366,6 +385,16 @@ __DATA__
         </xs:complexType>
     </xs:element>
     
+    <xs:element name="Framework">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Minimum" use="optional" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="Filelist">
         <xs:complexType>
             <xs:sequence>
@@ -501,7 +530,6 @@ __DATA__
     <xs:element name="Name" type="xs:token"/>
     <xs:element name="Vendor" type="xs:token"/>
     <xs:element name="URL" type="xs:token"/>
-    <xs:element name="Framework" type="xs:token"/>
     <xs:element name="Version" type="xs:token"/>
     <xs:element name="License" type="xs:token"/>
     <xs:element name="OS" type="xs:token"/>

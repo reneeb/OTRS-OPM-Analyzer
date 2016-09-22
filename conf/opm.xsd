@@ -59,6 +59,17 @@
         </xs:complexType>
     </xs:element>
     
+    <xs:element name="Framework">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Minimum" use="optional" type="xs:anySimpleType"/>
+                    <xs:attribute name="Maximum" use="optional" type="xs:anySimpleType"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
     <xs:element name="Filelist">
         <xs:complexType>
             <xs:sequence>
@@ -194,7 +205,6 @@
     <xs:element name="Name" type="xs:token"/>
     <xs:element name="Vendor" type="xs:token"/>
     <xs:element name="URL" type="xs:token"/>
-    <xs:element name="Framework" type="xs:token"/>
     <xs:element name="Version" type="xs:token"/>
     <xs:element name="License" type="xs:token"/>
     <xs:element name="OS" type="xs:token"/>
