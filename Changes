@@ -1,6 +1,10 @@
 Change history for OTRS::OPM::Analyzer
 ======================================
 
+0.05 2016-09-22
+
+  + add support for Minimum and Maximum in framework settings
+
 0.04 2016-05-27
 
   + Allow more variants of framework version strings. Users also use "5.x" to say that the package is for all OTRS5 versions
