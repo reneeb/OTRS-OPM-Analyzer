@@ -1,6 +1,10 @@
 Change history for OTRS::OPM::Analyzer
 ======================================
 
+0.06 2016-09-28
+
+  + made an extra distribution for parser module (OTRS::OPM::Parser)
+
 0.05 2016-09-22
 
   + add support for Minimum and Maximum in framework settings

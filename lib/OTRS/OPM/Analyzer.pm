@@ -5,15 +5,15 @@ package OTRS::OPM::Analyzer;
 use Moose;
 use Moose::Util::TypeConstraints;
 
-use OTRS::OPM::Analyzer::Utils::OPMFile;
+use OTRS::OPM::Parser;
 use OTRS::OPM::Analyzer::Utils::Config;
 
-our $VERSION = 0.05;
+our $VERSION = 0.06;
 
 # define types
 subtype 'OPMFile' =>
   as 'Object' =>
-  where { $_->isa( 'OTRS::OPM::Analyzer::Utils::OPMFile' ) };
+  where { $_->isa( 'OTRS::OPM::Parser' ) };
 
 # declare attributes
 has opm => (
@@ -69,7 +69,7 @@ sub analyze {
     
     $self->_load_roles;
     
-    my $opm_object = OTRS::OPM::Analyzer::Utils::OPMFile->new(
+    my $opm_object = OTRS::OPM::Parser->new(
         opm_file => $opm,
     );
     my $success    = $opm_object->parse;

@@ -9,7 +9,7 @@ use Time::HiRes qw(time);
 
 use lib qw(/home/opar/OTRS-OPM-Analyzer/lib/);
 use OTRS::OPM::Analyzer;
-use OTRS::OPM::Analyzer::Utils::OPMFile;
+use OTRS::OPM::Parser;
 
 my $dir  = '/home/opar/community/analyzer_test/uploads';
 my @opms = File::Find::Rule->file->name( '*.opm' )->in( $dir );
@@ -25,7 +25,7 @@ my %roles = $analyzer->roles;
 FILE:
 for my $file ( @opms ) {
     warn $file,"\n";
-    my $opm = OTRS::OPM::Analyzer::Utils::OPMFile->new( opm_file => $file );
+    my $opm = OTRS::OPM::Parser->new( opm_file => $file );
     eval { $opm->parse; 1; } or next FILE;
 
     my @files_inc = $opm->files;
