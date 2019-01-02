@@ -8,7 +8,7 @@ use Moose::Util::TypeConstraints;
 use OTRS::OPM::Parser;
 use OTRS::OPM::Analyzer::Utils::Config;
 
-our $VERSION = 0.06;
+our $VERSION = '0.07';
 
 # define types
 subtype 'OPMFile' =>
