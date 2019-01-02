@@ -131,3 +131,10 @@ no Moose::Role;
 This role checks if all dependencies were declared. To achieve this, all modules that are
 C<use>d are compared to the modules OTRS ships and those that are shipped with the Perl
 core.
+
+=head1 METHODS
+
+=head2 check
+
+See I<DESCRIPTION>
+

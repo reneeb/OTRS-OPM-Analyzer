@@ -37,3 +37,10 @@ sub check {
 no Moose::Role;
 
 1;
+=head1 METHODS
+
+=head2 check
+
+Check if a license is used that is recognised by L<Software::License>
+
+

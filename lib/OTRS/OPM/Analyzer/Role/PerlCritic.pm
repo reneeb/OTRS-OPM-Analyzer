@@ -49,3 +49,11 @@ sub check {
 no Moose::Role;
 
 1;
+
+=head1 METHODS
+
+=head2 check
+
+Check the code L<Perl::Critic> to be OTRS coding guidelines compliant
+
+

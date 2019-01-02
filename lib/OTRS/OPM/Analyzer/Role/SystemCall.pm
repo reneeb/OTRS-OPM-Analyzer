@@ -73,3 +73,10 @@ no Moose::Role;
 
 It might be bad when OTRS add ons calls a third party program. Hence we check for it.
 
+=head1 METHODS
+
+=head2 check
+
+See I<DESCRIPTION>
+
+

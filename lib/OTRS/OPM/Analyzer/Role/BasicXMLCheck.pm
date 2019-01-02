@@ -31,3 +31,10 @@ no Moose::Role;
 
 All .xml files are checked if they can be parsed with C<XML::LibXML>
 
+=head1 METHODS
+
+=head2 check
+
+Checks if the document can be parsed by L<XML::LibXML>
+
+=cut

@@ -26,3 +26,11 @@ sub check {
 no Moose::Role;
 
 1;
+
+=head1 METHODS
+
+=head2 check
+
+See I<DESCRIPTION>
+
+

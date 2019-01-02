@@ -67,5 +67,11 @@ no Moose::Role;
 
 1;
 
+=head1 METHODS
+
+=head2 check
+
+See I<DESCRIPTION>
+
 __DATA__
 -l=100 -i=4 -ci=4 -vt=0 -vtc=0 -cti=0 -pt=1 -bt=1 -sbt=1 -bbt=1 -nsfs -nolq -bbao -nola -ndnl

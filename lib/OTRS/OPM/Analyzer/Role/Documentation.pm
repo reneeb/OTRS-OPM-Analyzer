@@ -25,3 +25,10 @@ sub check {
 no Moose::Role;
 
 1;
+
+=head1 METHODS
+
+=head2 check
+
+Check if some kind of documentation is included
+
