@@ -6,6 +6,7 @@ before_install:
    # Prevent "Please tell me who you are" errors for certain DZIL configs
    - git config --global user.name "TravisCI"
    - cpanm Test::LeakTrace
+   - cpanm Mouse
 
 install:
    # Deal with all of the DZIL dependancies, quickly and quietly
