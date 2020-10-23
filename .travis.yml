@@ -9,6 +9,7 @@ before_install:
    - cpanm Mouse
    - cpanm MooseX::MarkAsMethods
    - cpanm Term::Table
+   - cpanm Algorithm::C3
 
 install:
    # Deal with all of the DZIL dependancies, quickly and quietly
