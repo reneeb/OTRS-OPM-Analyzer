@@ -6,10 +6,35 @@ before_install:
    # Prevent "Please tell me who you are" errors for certain DZIL configs
    - git config --global user.name "TravisCI"
 
-   - cpanm Test::Needs  --notest
-   - cpanm LWP::Simple  --notest
-   - cpanm Moose        --notest
-   - cpanm Mouse        --notest
+   - cpanm Carp
+   - cpanm Data::Dumper
+   - cpanm File::Basename
+   - cpanm File::Find::Rule
+   - cpanm File::Path
+   - cpanm File::Spec
+   - cpanm File::Temp
+   - cpanm FindBin
+   - cpanm HTML::Lint
+   - cpanm LWP::Simple
+   - cpanm MIME::Base64
+   - cpanm Module::CoreList
+   - cpanm Module::OTRS::CoreList
+   - cpanm Moose
+   - cpanm Moose::Role
+   - cpanm OTRS::OPM::Parser
+   - cpanm Path::Class
+   - cpanm Perl::Tidy
+   - cpanm Perl::Critic
+   - cpanm PPI
+   - cpanm Software::License
+   - cpanm Software::LicenseUtils
+   - cpanm Term::Table
+   - cpanm Test::Exception
+   - cpanm Test::More
+   - cpanm Text::Diff
+   - cpanm Try::Tiny
+   - cpanm XML::LibXML
+   - cpanm YAML::Tiny
 install:
    # Deal with all of the DZIL dependancies, quickly and quietly
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
@@ -20,6 +45,6 @@ install:
    - dzil listdeps | grep -vP '[^\w:]' | cpanm --verbose
 
 script:
-   - dzil smoke --release
+   - dzil smoke --release --author
 
 
