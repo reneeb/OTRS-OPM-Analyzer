@@ -6,35 +6,6 @@ before_install:
    # Prevent "Please tell me who you are" errors for certain DZIL configs
    - git config --global user.name "TravisCI"
 
-   - cpanm Carp  --notest
-   - cpanm Data::Dumper  --notest
-   - cpanm File::Basename  --notest
-   - cpanm File::Find::Rule  --notest
-   - cpanm File::Path  --notest
-   - cpanm File::Spec  --notest
-   - cpanm File::Temp  --notest
-   - cpanm FindBin  --notest
-   - cpanm HTML::Lint  --notest
-   - cpanm LWP::Simple  --notest
-   - cpanm MIME::Base64  --notest
-   - cpanm Module::CoreList  --notest
-   - cpanm Module::OTRS::CoreList  --notest
-   - cpanm Moose  --notest
-   - cpanm Moose::Role  --notest
-   - cpanm OTRS::OPM::Parser  --notest
-   - cpanm Path::Class  --notest
-   - cpanm Perl::Tidy  --notest
-   - cpanm Perl::Critic  --notest
-   - cpanm PPI  --notest
-   - cpanm Software::License  --notest
-   - cpanm Software::LicenseUtils  --notest
-   - cpanm Term::Table  --notest
-   - cpanm Test::Exception  --notest
-   - cpanm Test::More  --notest
-   - cpanm Text::Diff  --notest
-   - cpanm Try::Tiny  --notest
-   - cpanm XML::LibXML  --notest
-   - cpanm YAML::Tiny  --notest
 install:
    # Deal with all of the DZIL dependancies, quickly and quietly
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
