@@ -5,11 +5,9 @@ perl:
 before_install:
    # Prevent "Please tell me who you are" errors for certain DZIL configs
    - git config --global user.name "TravisCI"
-   - cpanm Test::LeakTrace
-   - cpanm Mouse
-   - cpanm MooseX::MarkAsMethods
-   - cpanm Term::Table
-   - cpanm Algorithm::C3
+
+   - cpanm Perl::Tidy --notest
+   - cpanm Perl::Critic --notest
 
 install:
    # Deal with all of the DZIL dependancies, quickly and quietly
