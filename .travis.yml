@@ -45,6 +45,6 @@ install:
    - dzil listdeps | grep -vP '[^\w:]' | cpanm --verbose  --notest
 
 script:
-   - dzil smoke --release --author
+   - dzil smoke --release
 
 
