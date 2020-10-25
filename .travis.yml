@@ -8,6 +8,7 @@ before_install:
 
    - cpanm Perl::Tidy --notest
    - cpanm Perl::Critic --notest
+   - cpanm Test::Needs --notest
    - cpanm LWP::Simple --notest
 install:
    # Deal with all of the DZIL dependancies, quickly and quietly
