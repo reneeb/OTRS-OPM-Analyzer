@@ -16,6 +16,6 @@ install:
    - dzil listdeps | grep -vP '[^\w:]' | cpanm --notest
 
 script:
-   - dzil smoke --release
+   - dzil smoke --release --author
 
 
