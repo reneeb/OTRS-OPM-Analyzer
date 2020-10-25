@@ -12,6 +12,7 @@ before_install:
    - cpanm LWP::Simple  --notest
    - cpanm Moose        --notest
    - cpanm Mouse        --notest
+   - cpanm Term::Table  --notest
 install:
    # Deal with all of the DZIL dependancies, quickly and quietly
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
