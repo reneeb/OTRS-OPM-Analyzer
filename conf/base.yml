@@ -1,6 +1,6 @@
 ---
 utils:
-  config: D:/Git/OPAR/OTRS-OPM-Analyzer/conf
+  config: conf
   perltidy:
     config: perltidyrc
   perlcritic:
