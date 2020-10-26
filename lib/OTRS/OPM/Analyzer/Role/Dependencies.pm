@@ -16,14 +16,14 @@ sub check {
     my ( $self, $opm ) = @_;
     
     # get all dependencies declared in opm file
-    my %named_dependencies = map{ my $name = $_->{name}; $name => 1; }$opm->dependencies;
+    my %named_dependencies = map{ my $name = $_->{name}; $name => 1; } @{$opm->dependencies};
     my @otrs_versions      = $opm->framework;
     my $perl_version       = $self->config->get( 'general.perl_version' );
     
     my %uses;
 
     # get all modules used, required, Required by the files    
-    for my $file ( $opm->files ) {
+    for my $file ( @{$opm->files} ) {
         my @file_uses = $self->_get_file_dependencies( $file );
         if ( @file_uses ) {
             @uses{@file_uses} = (1) x @file_uses;
