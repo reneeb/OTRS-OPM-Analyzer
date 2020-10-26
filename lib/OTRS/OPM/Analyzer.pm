@@ -84,7 +84,7 @@ sub analyze {
     my %roles   = $self->roles;
     my $counter = 1;
     
-    for my $file ( $opm_object->files ) {
+    for my $file ( @{$opm_object->files} ) {
         
         ROLE:
         for my $role ( @{ $roles{file} || [] } ) {
