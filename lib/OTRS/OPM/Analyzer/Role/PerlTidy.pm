@@ -72,6 +72,6 @@ no Moose::Role;
 =head2 check
 
 See I<DESCRIPTION>
-
+=cut
 __DATA__
--l=100 -i=4 -ci=4 -vt=0 -vtc=0 -cti=0 -pt=1 -bt=1 -sbt=1 -bbt=1 -nsfs -nolq -bbao -nola -ndnl
+-l=100 -i=4 -ci=4 -vt=0 -vtc=0 -cti=0 -pt=0 -bt=1 -sbt=1 -bbt=1 -nsfs -nolq -bbao -nola -ndnl
