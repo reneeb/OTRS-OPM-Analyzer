@@ -13,7 +13,7 @@ sub check {
     my $has_unittest = 0;
     
     FILE:
-    for my $file ( $opm->files ) {
+    for my $file ( @{$opm->files} ) {
         if ( $file->{filename} =~ m{ /scripts/test/ .*?\.t \z } ) {
             $has_unittest = 1;
             last FILE;

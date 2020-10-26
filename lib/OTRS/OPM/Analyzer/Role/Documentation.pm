@@ -12,7 +12,7 @@ sub check {
     my $has_documentation = 0;
     
     FILE:
-    for my $file ( $opm->files ) {
+    for my $file ( @{$opm->files} ) {
         if ( $file->{filename} =~ m{ /doc/ .*?\.(?:xml|pod|pdf) \z } ) {
             $has_documentation = 1;
             last FILE;
